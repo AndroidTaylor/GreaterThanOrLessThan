@@ -137,10 +137,8 @@ def eight(x):
     
 def nine(x):
     canvas.create_rectangle(20+x, 10, 100+x, 10,) 
-    canvas.create_rectangle(10+x, 20, 10+x, 100,)
-    canvas.create_rectangle(10+x, 120, 10+x, 200,)
+    canvas.create_rectangle(10+x, 20, 10+x, 100)
     canvas.create_rectangle(20+x, 110, 100+x, 110)
-    canvas.create_rectangle(20+x, 210, 100+x, 210)
     canvas.create_rectangle(110+x, 20, 110+x, 100)
     canvas.create_rectangle(110+x, 120, 110+x, 200)
 
