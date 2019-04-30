@@ -258,6 +258,9 @@ def Compare(Spacing):
 #Creating a genericly named window in tkinter
 window = tk.Tk()
 
+#Replacing that awful default grey with white.
+window.configure(background='white')
+
 #Labeling the entry boxes so you know what you are supposed to be entering
 tk.Label(window, text="First Number").grid(row=0)
 tk.Label(window, text="Second Number").grid(row=1)
@@ -271,7 +274,7 @@ entry2.grid(row=1, column=1)
 
 
 #Creating the canvas where the drawn out numbers go
-canvas = tk.Canvas(window, width=670, height=220)
+canvas = tk.Canvas(window, width=670, height=220, bg='white')
 canvas.grid(row=2)
 
 #Setting the canvas to be all zeros
