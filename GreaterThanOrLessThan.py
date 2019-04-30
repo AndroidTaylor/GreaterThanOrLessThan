@@ -239,6 +239,16 @@ def Compare(Spacing):
                 elif len(str(Number1)) == 2:
                     Spacing = -110
                 
+                #Preventing more than 2 characters from being entered
+                elif len(str(Number1)) > 2:
+                    UserError()
+                    
+            #Preventing more than 2 characters from being entered.
+            if len(str(Number2)) > 2:
+                UserError()
+            else:
+                pass
+                
             if Spacing == 220:
                 Spacing = Spacing + 220
             else:
