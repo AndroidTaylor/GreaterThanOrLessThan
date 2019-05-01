@@ -63,7 +63,7 @@ def ClearText():
     Error = 0
 
 #Creating function that will try to work as exeption handling.    
-def UserError():
+def UserError(Error):
     canvas.delete(tk.ALL)
     default()
     entry1.delete(0, tk.END)
@@ -200,7 +200,7 @@ def CharIdentity(Character, Spacing):
         EqualTo()
         
     else:
-        UserError()
+        UserError(Error)
         Sentence = ''
 
 #Clears canvas, and takes input from entry boxes, then compares them (>, <, or =)        
@@ -212,11 +212,11 @@ def Compare(Spacing):
         #This was implemented April 30th to fix a bug where 3 would look > 22.
         #Also fixes an error with the visuals where the second value of the second
         #Number wouldn't 'print' if the first number was single digit
-        if int(Number1) < 10:
-            Number1 = '0'+Number1
+        if len(Number1) == 1:
+            Number1 = '0'+str(Number1)
         else:
             pass
-        if int(Number2) < 10:
+        if len(Number2) == 1:
             Number2 = '0'+str(Number2)
         else:
             pass
@@ -258,11 +258,11 @@ def Compare(Spacing):
                 
                     #Preventing more than 2 characters from being entered
                     elif len(str(Number1)) > 2:
-                        UserError()
+                        UserError(Error)
                     
                 #Preventing more than 2 characters from being entered.
                 if len(str(Number2)) > 2:
-                    UserError()
+                    UserError(Error)
                 else:
                     pass
                 
