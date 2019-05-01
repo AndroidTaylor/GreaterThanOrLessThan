@@ -205,53 +205,72 @@ def CharIdentity(Character, Spacing):
 
 #Clears canvas, and takes input from entry boxes, then compares them (>, <, or =)        
 def Compare(Spacing):
-    canvas.delete(tk.ALL)
-    Number1 = entry1.get()
-    Number2 = entry2.get()
-    Error = 0
-    
-    if Number1 > Number2:
-        Sentence = str(Number1)+">"+str(Number2)
-    elif Number1 < Number2:
-        Sentence = str(Number1)+"<"+str(Number2)
-    else:
-        Sentence = str(Number1)+"="+str(Number2)
+        canvas.delete(tk.ALL)
+        Number1 = entry1.get()
+        Number2 = entry2.get()
 
-    #This prints to termnial, just as a quick check that the code works.
-    print(Sentence)
-        
-    #Calls that conversion function previously defined, and adds spacing for each 
-    #number
-    for x in Sentence:
-        
-        #If there is one erro while printing, this makes sure nothing extra will print
-        if Error == 1:
-            pass
-            #Properly moves the starting number closer if it is single digit as opposed 
-            #to double digit
+        #This was implemented April 30th to fix a bug where 3 would look > 22.
+        #Also fixes an error with the visuals where the second value of the second
+        #Number wouldn't 'print' if the first number was single digit
+        if int(Number1) < 10:
+            Number1 = '0'+Number1
         else:
-            while x == str(Number1):
-                if len(str(Number1)) == 1:
-                    Spacing = Spacing + 110
-                    break
-                elif len(str(Number1)) == 2:
-                    Spacing = -110
-                
-                #Preventing more than 2 characters from being entered
-                elif len(str(Number1)) > 2:
-                    UserError()
-                    
-            #Preventing more than 2 characters from being entered.
-            if len(str(Number2)) > 2:
-                UserError()
-            else:
+            pass
+        if int(Number2) < 10:
+            Number2 = '0'+str(Number2)
+        else:
+            pass
+        Error = 0
+
+        print(Number1)
+        print(Number2)
+    
+        if Number1 > Number2:
+            Sentence = str(Number1)+">"+str(Number2)
+            print("one")
+        elif Number1 < Number2:
+            Sentence = str(Number1)+"<"+str(Number2)
+            print("two")
+        else:
+            Sentence = str(Number1)+"="+str(Number2)
+            print("three")
+
+        #This prints to termnial, just as a quick check that the code works.
+        print(Sentence)
+        
+        #Calls that conversion function previously defined, and adds spacing for each 
+        #number
+        for x in Sentence:
+            print(x)
+        
+            #If there is one erro while printing, this makes sure nothing extra will print
+            if Error == 1:
                 pass
-                
-            if Spacing == 220:
-                Spacing = Spacing + 220
+                #Properly moves the starting number closer if it is single digit as opposed 
+                #to double digit
             else:
-                Spacing = Spacing + 110
-            CharIdentity(x, Spacing)
+                while x == str(Number1):
+                    if len(str(Number1)) == 1:
+                        Spacing = Spacing + 110
+                        break
+                    elif len(str(Number1)) == 2:
+                        Spacing = -110
+                
+                    #Preventing more than 2 characters from being entered
+                    elif len(str(Number1)) > 2:
+                        UserError()
+                    
+                #Preventing more than 2 characters from being entered.
+                if len(str(Number2)) > 2:
+                    UserError()
+                else:
+                    pass
+                
+                if Spacing == 220:
+                    Spacing = Spacing + 220
+                else:
+                    Spacing = Spacing + 110
+                CharIdentity(x, Spacing)
         
 #Creating a genericly named window in tkinter
 window = tk.Tk()
